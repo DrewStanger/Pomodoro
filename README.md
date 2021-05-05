@@ -7,5 +7,6 @@ I find it useful to utilise this so I decided I'd make a little application to p
 
 To do:
 
-Refactoring now that it works.
-GUI.
+- Implement break functionality
+- Implement time worked tracking 
+- Improve the GUI
