@@ -42,10 +42,17 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
 
+//        Parent root = FXMLLoader.load(getClass().getResource("PomodoroScene.fxml"));
+//        Scene scene = new Scene(root);
+//        primaryStage.setScene(scene);
+//        primaryStage.show();
         //Layouts
-        BorderPane layout = new BorderPane();
+        //Pom Layout
+        BorderPane pomodoroLayout = new BorderPane();
+        //Break Layout
+//        BorderPane breakTimeLayout = new BorderPane();
+
         HBox counterLayout = new HBox(50);
         HBox buttonLayout = new HBox(50);
 
@@ -65,15 +72,18 @@ public class Main extends Application {
         buttonLayout.getChildren().add(pomReset);
 
         //Scene to display
-        layout.setCenter(counterLayout);
-        layout.setBottom(buttonLayout);
-        Scene view = new Scene(layout);
+        pomodoroLayout.setCenter(counterLayout);
+        pomodoroLayout.setBottom(buttonLayout);
+//        breakTimeLayout.setCenter(counterLayout);
+//        breakTimeLayout.setCenter(buttonLayout);
+        Scene view = new Scene(pomodoroLayout);
+//        Scene view2 = new Scene(breakTimeLayout);
 
         //set up primary stage
         primaryStage.setTitle("Pomodoro");
         primaryStage.setScene(view);
         primaryStage.show();
-        
+
         //Button action monitoring
         //pomStart
         pomStart.setOnAction((event -> {
@@ -128,7 +138,8 @@ public class Main extends Application {
     }
 
     public void nextTimer(){
-        //DOES NOT WORK FIX THIS BIT. 
+        //DOES NOT WORK FIX THIS BIT.
+        //Use to Switch Scene
         if(currentlyBreak = false){
             this.minutes = 5;
             pomTimer.setText(String.valueOf(minutes) + ":00");
