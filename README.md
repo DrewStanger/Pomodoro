@@ -6,7 +6,7 @@ The Pomodoro Technique is a time management method developed by Francesco Cirill
 I find it useful to utilise this so I decided I'd make a little application to put my Java to the test.
 
 To do this I have used;
-- Java.
+- Java and JavaFX.
 - Scenebuilder to help build the UI.
 
 To do:
