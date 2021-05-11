@@ -7,9 +7,13 @@ import static java.lang.Thread.sleep;
 public class Pomodoro {
     private int pomTime;
     private int breakTime;
+    private int seconds;
+    private int minutes;
     private Boolean paused;
 
     public Pomodoro() {
+        this.minutes = 25;
+        this.seconds = minutes * 60;
         this.pomTime = (25 * 60);
         this.breakTime = 5;
         this.paused = false;
@@ -27,37 +31,21 @@ public class Pomodoro {
         this.breakTime = time;
     }
 
-    public void startCountdown(){
-        //if the countdown is not paused run the timer.
-        if(!paused){
-            while(pomTime > 0){
 
-                try{
-                    pomTime--;
-                    sleep(1000);
-                } catch(Exception e){
-                    System.out.println("There has been an error " + e);
-                }
-
-            }
-        }
-        System.out.println("Pom done!");
+    public int getSeconds() {
+        return seconds;
     }
 
-    public void startBreakCountdown(){
-        if(!paused){
-            while (breakTime > 0) {
-                System.out.println("current time is " + breakTime);
-                try {
-                    breakTime--;
-                    sleep(1000);
-                } catch (Exception e) {
-                    System.out.println("There has been an error " + e);
-                }
+    public void setSeconds(int seconds) {
+        this.seconds = seconds;
+    }
 
-            }
-        }
-        System.out.println("Break done!");
+    public int getMinutes() {
+        return minutes;
+    }
+
+    public void setMinutes(int minutes) {
+        this.minutes = minutes;
     }
 
     public void pauseTimer(){
@@ -67,5 +55,7 @@ public class Pomodoro {
     public void unpauseTimer(){
         this.paused = false;
     }
+
+
 }
 
