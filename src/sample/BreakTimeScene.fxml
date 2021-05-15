@@ -4,19 +4,29 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #93bacc;" xmlns="http://javafx.com/javafx/11.0.02" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SceneController">
    <children>
-      <Label layoutX="111.0" layoutY="14.0" text="This is BreakTime">
+      <Button layoutX="352.0" layoutY="332.0" mnemonicParsing="false" onAction="#switchToSceneOne" style="-fx-background-color: white;" text="Switch to Pomodoro">
          <font>
-            <Font size="50.0" />
-         </font>
-      </Label>
-      <Button layoutX="197.0" layoutY="178.0" mnemonicParsing="false" onAction="#switchToSceneOne" text="Switch to Pomodoro">
-         <font>
-            <Font size="20.0" />
+            <Font name="Arial Bold" size="20.0" />
          </font>
       </Button>
+      <Label layoutX="170.0" layoutY="68.0" text="Break Timer" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="45.0" />
+         </font>
+      </Label>
+      <Button fx:id="pomStart" layoutX="75.0" layoutY="332.0" mnemonicParsing="false" onAction="#startBreakTimer" style="-fx-background-color: white;" text="Start">
+         <font>
+            <Font name="Arial Bold" size="20.0" />
+         </font>
+      </Button>
+      <Text fx:id="pomTimer" fill="WHITE" layoutX="147.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="05:00">
+         <font>
+            <Font name="Arial Bold" size="120.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

@@ -6,32 +6,37 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ff8282;" xmlns="http://javafx.com/javafx/11.0.02" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SceneController">
    <children>
-      <Label layoutX="151.0" layoutY="14.0" text="Pomodoro Timer">
+      <Label layoutX="121.0" layoutY="68.0" text="Pomodoro Timer" textFill="WHITE">
          <font>
-            <Font size="40.0" />
+            <Font name="Arial Bold" size="45.0" />
          </font>
       </Label>
-      <Button fx:id="pomStart" layoutX="83.0" layoutY="332.0" mnemonicParsing="false" onAction="#startTimer" text="Start">
+      <Button fx:id="pomStart" layoutX="79.0" layoutY="332.0" mnemonicParsing="false" onAction="#startTimer" style="-fx-background-color: white;" text="Start">
          <font>
-            <Font size="20.0" />
+            <Font name="Arial Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="PomPause" layoutX="261.0" layoutY="332.0" mnemonicParsing="false" onAction="#pauseTimer" text="Pause">
+      <Button fx:id="PomPause" layoutX="258.0" layoutY="332.0" mnemonicParsing="false" onAction="#pauseTimer" style="-fx-background-color: white;" text="Pause">
          <font>
-            <Font size="20.0" />
+            <Font name="Arial Bold" size="20.0" />
          </font>
       </Button>
-      <Button fx:id="PomReset" layoutX="450.0" layoutY="332.0" mnemonicParsing="false" onAction="#resetTimer" text="Reset">
+      <Button fx:id="PomReset" layoutX="450.0" layoutY="332.0" mnemonicParsing="false" onAction="#resetTimer" style="-fx-background-color: white;" text="Reset">
          <font>
-            <Font size="20.0" />
+            <Font name="Arial Bold" size="20.0" />
          </font>
       </Button>
-      <Text fx:id="pomTimer" layoutX="202.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="25:00">
+      <Text fx:id="pomTimer" fill="WHITE" layoutX="146.0" layoutY="249.0" stroke="#252525" strokeType="OUTSIDE" strokeWidth="0.0" text="25:00">
          <font>
-            <Font size="83.0" />
+            <Font name="System Bold" size="120.0" />
          </font>
       </Text>
+      <Button layoutX="438.0" layoutY="6.0" mnemonicParsing="false" onAction="#switchToSceneTwo" text="Switch to Break">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

@@ -12,10 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-
-import java.awt.*;
 import java.io.IOException;
-import java.sql.Time;
+import java.util.concurrent.CountDownLatch;
 
 public class SceneController {
     private Stage stage;
@@ -23,23 +21,16 @@ public class SceneController {
     private Parent root;
     private final Timeline timeline;
     private Pomodoro pomodoro;
+    private boolean complete;
 
 
     @FXML
     private Text pomTimer;
 
-//    @FXML
-//    private Button pomStart;
-//
-//    @FXML
-//    private Button PomPause;
-//
-//    @FXML
-//    private Button PomReset;
-
     public SceneController() {
         this.timeline = new Timeline();
         this.pomodoro = new Pomodoro();
+        this.complete = false;
     }
 
     public void switchToSceneOne(ActionEvent event) throws IOException {
@@ -58,10 +49,20 @@ public class SceneController {
         stage.show();
     }
 
+    public void switchToBreak() throws IOException{
+        root = FXMLLoader.load(getClass().getResource("BreakTimeScene.fxml"));
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void setPomStartingTime(){
+        pomTimer.setText(String.valueOf(pomodoro.getPomTime()));
+    }
+
     public Text getPomTimer(){
         return this.pomTimer;
     }
-
 
     public void setPomTimer(int seconds){
         pomTimer.setText(seconds / 60 + ":" + seconds % 60);
@@ -80,11 +81,10 @@ public class SceneController {
                 setPomTimer(pomodoro.getSeconds());
                 if(pomodoro.getSeconds() <= 0){
                     timeline.stop();
-                    //when complete set up the next time
-//                    nextTimer();
                 }
             }
         });
+
         if(timeline.getKeyFrames().isEmpty()){
             timeline.getKeyFrames().add(frame);
         }
@@ -93,6 +93,23 @@ public class SceneController {
 
     public void startTimer(){
         System.out.println("Pom Start Pressed!");
+        pomodoro.setMinutes(25);
+        pomodoro.setSeconds(25 *60);
+        // if current seconds less than set minutes resume timer.
+        if(pomodoro.getSeconds() < (pomodoro.getMinutes() * 60)){
+            timeline.play();
+        }
+        // else start the countdown.
+        else{
+            countDown();
+        }
+    }
+
+    public void startBreakTimer(){
+        System.out.println("Pom Start Pressed!");
+        //set timer to 5 minutes for break
+        pomodoro.setMinutes(5);
+        pomodoro.setSeconds(5 * 60);
         // if current seconds less than set minutes resume timer.
         if(pomodoro.getSeconds() < (pomodoro.getMinutes() * 60)){
             timeline.play();

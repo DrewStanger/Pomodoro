@@ -1,12 +1,13 @@
 package sample;
 
-import java.util.Scanner;
+import javafx.scene.text.Text;
 
 import static java.lang.Thread.sleep;
 
 public class Pomodoro {
     private int pomTime;
-    private int breakTime;
+    private int breakTimeMinutes;
+    private int breakTimeSeconds;
     private int seconds;
     private int minutes;
     private Boolean paused;
@@ -15,7 +16,8 @@ public class Pomodoro {
         this.minutes = 25;
         this.seconds = minutes * 60;
         this.pomTime = (25 * 60);
-        this.breakTime = 5;
+        this.breakTimeMinutes = 5;
+        this.breakTimeSeconds = breakTimeMinutes * 60;
         this.paused = false;
     }
 
@@ -28,9 +30,8 @@ public class Pomodoro {
     }
 
     public void setBreakTime(int time) {
-        this.breakTime = time;
+        this.breakTimeMinutes = time;
     }
-
 
     public int getSeconds() {
         return seconds;
@@ -42,6 +43,10 @@ public class Pomodoro {
 
     public int getMinutes() {
         return minutes;
+    }
+
+    public int getBreakTime(){
+        return breakTimeMinutes;
     }
 
     public void setMinutes(int minutes) {
