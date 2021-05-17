@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -73,15 +74,14 @@ public class SceneController {
         if(timeline!=null){
             timeline.stop();
         }
-        KeyFrame frame = new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>(){
-
-            @Override
-            public void handle(ActionEvent event) {
-                pomodoro.setSeconds(pomodoro.getSeconds() - 1);
-                setPomTimer(pomodoro.getSeconds());
-                if(pomodoro.getSeconds() <= 0){
-                    timeline.stop();
-                }
+        KeyFrame frame = new KeyFrame(Duration.seconds(1), (ActionEvent event) -> {
+            pomodoro.setSeconds(pomodoro.getSeconds() - 1);
+            setPomTimer(pomodoro.getSeconds());
+            if(pomodoro.getSeconds() <= 0){
+                timeline.stop();
+                pomTimer.setText("Finished!");
+                javafx.scene.media.AudioClip pomodoroAlarm = new AudioClip(this.getClass().getResource("telephone-ring-03a.mp3").toString());
+                pomodoroAlarm.play();
             }
         });
 
@@ -93,8 +93,8 @@ public class SceneController {
 
     public void startTimer(){
         System.out.println("Pom Start Pressed!");
-        pomodoro.setMinutes(25);
-        pomodoro.setSeconds(25 *60);
+        pomodoro.setMinutes(5);
+        pomodoro.setSeconds(pomodoro.getMinutes() *60);
         // if current seconds less than set minutes resume timer.
         if(pomodoro.getSeconds() < (pomodoro.getMinutes() * 60)){
             timeline.play();
