@@ -17,4 +17,5 @@ Current Status:
 
 To do:
 - Implement time worked tracking 
+- Figure out how to automatically swtich scenes
 
