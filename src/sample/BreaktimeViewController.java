@@ -13,26 +13,24 @@ import javafx.scene.media.AudioClip;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+public class BreaktimeViewController implements Initializable {
 
-public class SceneController implements Initializable {
-    private final Timeline timeline;
     private Pomodoro pomodoro;
-
+    private final Timeline timeline;
 
     @FXML
     private Text pomTimer;
 
-    public SceneController() {
+    public BreaktimeViewController() {
 //        this.timeline = new Timeline();
-        this.pomodoro = new Pomodoro();
         this.timeline = new Timeline();
     }
-
-    //to take values from the 2nd scene if returning to this scene
+    //this method accepts the pomodoro to initialize the breaktimer.
     public void initData(Pomodoro pomodoro){
         this.pomodoro = pomodoro;
     }
@@ -42,16 +40,14 @@ public class SceneController implements Initializable {
         //TODO
     }
 
-
-    //When called pass the pomodoro to the break screen.
-    public void switchToSceneTwo(ActionEvent event) throws IOException{
+    public void switchToSceneOne(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("BreakTimeScene.fxml"));
-        Parent PomodoroSceneParent = loader.load();
+        loader.setLocation(getClass().getResource("PomodoroScene.fxml"));
+        Parent BreakSceneParent = loader.load();
 
-        Scene scene = new Scene(PomodoroSceneParent);
+        Scene scene = new Scene(BreakSceneParent);
         //access the controller and call a method
-        BreaktimeViewController controller = loader.getController();
+        SceneController controller = loader.getController();
         controller.initData(pomodoro);
 
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -59,7 +55,6 @@ public class SceneController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
-
 
     public void countDown(){
         timeline.setCycleCount(Timeline.INDEFINITE);
@@ -76,7 +71,6 @@ public class SceneController implements Initializable {
                 timeline.stop();
                 javafx.scene.media.AudioClip pomodoroAlarm = new AudioClip(this.getClass().getResource("telephone-ring-03a.mp3").toString());
                 pomodoroAlarm.play();
-                pomodoro.pomIntervals();
             }
         });
 
@@ -100,23 +94,23 @@ public class SceneController implements Initializable {
         }
     }
 
-    public void resetTimer(){
-        System.out.println("Pom Reset Pressed!");
-        // reset to 25:00, call a stop function of timeline
-        timeline.stop();
-        pomodoro.setSeconds(pomodoro.getMinutes() * 60);
-        pomTimer.setText(pomodoro.getMinutes() + ":00");
-    }
-
-    public void pauseTimer(){
-        System.out.println("Pom Paused Pressed!");
-        timeline.pause();
-    }
 
     public void setPomTimer(int seconds){
         pomTimer.setText(seconds / 60 + ":" + seconds % 60);
     }
-
+//    public void startBreakTimer(){
+//        System.out.println("Pom Start Pressed!");
+//        //set timer to 5 minutes for break
+//        pomodoro.setSeconds(pomodoro.getBreakMinutes() * 60);
+//        // if current seconds less than set minutes resume timer.
+//        if(pomodoro.getSeconds() < (pomodoro.getBreakMinutes() * 60)){
+//            pomodoro.timelinePlay();
+//        }
+//        // else start the countdown.
+//        else{
+//            pomodoro.countDown();
+//        }
+//    }
 
 
 }
