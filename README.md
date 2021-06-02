@@ -7,10 +7,14 @@ I find it useful to utilise this so I decided I'd make a little application to p
 
 To do this I have used;
 - Java and JavaFX.
-- Scenebuilder to help build the UI.
+- Scenebuilder to build the UI.
+
+Current Status:
+- The timer functions, it can play, pause and be reset.
+- The GUI is simple.
+- The timer alarms on the remaining time reaching 0 minutes and 0 seconds.
+- The Main Pomodoro Scene and Break Pomodoro Scenes can be switched between and are controlled by seperate controllers
 
 To do:
-
-- Implement break functionality
 - Implement time worked tracking 
-- Improve the GUI
+
