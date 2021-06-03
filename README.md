@@ -5,8 +5,7 @@ The Pomodoro Technique is a time management method developed by Francesco Cirill
 
 I find it useful to utilise this so I decided I'd make a little application to put my Java to the test.
 
-![image](https://user-images.githubusercontent.com/26548547/120721809-7b87d400-c4c6-11eb-8563-17a735a1e148.png)
-![image](https://user-images.githubusercontent.com/26548547/120721833-8b9fb380-c4c6-11eb-96a7-b1ba7f45e02b.png)
+![image](https://user-images.githubusercontent.com/26548547/120721809-7b87d400-c4c6-11eb-8563-17a735a1e148.png) ![image](https://user-images.githubusercontent.com/26548547/120721833-8b9fb380-c4c6-11eb-96a7-b1ba7f45e02b.png)
 
 
 To do this I have used;
